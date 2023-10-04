@@ -1,0 +1,9 @@
+[log]
+level = "info"
+
+[service]
+name = "Go client demo"
+listening_address = ":5000"
+
+[app]
+server = ":5001"
