@@ -7,3 +7,7 @@ listening_address = ":5000"
 
 [app]
 server = ":5001"
+
+[router]
+v1_prefix="/v1"
+provsioning="/exec"

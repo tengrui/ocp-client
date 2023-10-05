@@ -1,7 +1,7 @@
 package app
 
 import (
-	"log"
+	"fmt"
 	"ocp-client/util/config"
 	"os"
 	"path/filepath"
@@ -20,7 +20,7 @@ func (app *App) initConfig() {
 	}
 	config.SetConfigPath(filepath.Join(configPath, configFileName))
 	if err := config.ReadInConfig(); err != nil {
-		log.Panicln("config read error: %s", err)
+		fmt.Printf("config read error: %s", err)
 	}
 	config.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 }

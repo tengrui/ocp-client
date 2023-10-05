@@ -11,8 +11,7 @@ import (
 )
 
 type App struct {
-	handler http.Handler
-	Logger  *logrus.Logger
+	Logger *logrus.Logger
 	*mux.Router
 }
 
@@ -28,8 +27,10 @@ func (app *App) Start() {
 	if addr == "" {
 		log.Fatal("app.server config missed")
 	}
-	fmt.Println("Server started at %s.", addr)
-	log.Fatal(http.ListenAndServe(addr, app.handler))
+	fmt.Printf("Server started at %s.", addr)
+	registers := app.initRegisters()
+	router := app.InitRouter(registers)
+	log.Fatal(http.ListenAndServe(addr, router))
 }
 
 func (app *App) Stop() {
